@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1328" height="516" viewBox="0 0 1328 516">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #002157;
+      }
+
+      .cls-2 {
+        stroke: #000;
+        stroke-linejoin: round;
+        stroke-width: 4px;
+        font-size: 244px;
+        filter: url(#filter);
+        fill: #fff;
+        text-anchor: middle;
+        font-family: "Signatra DEMO";
+        font-variant: small-caps;
+      }
+    </style>
+    <filter id="filter" x="281" y="147" width="722" height="183" filterUnits="userSpaceOnUse">
+      <feOffset result="offset" dx="-27" in="SourceAlpha"/>
+      <feGaussianBlur result="blur"/>
+      <feFlood result="flood" flood-opacity="0.49"/>
+      <feComposite result="composite" operator="in" in2="blur"/>
+      <feBlend result="blend" in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <rect id="Rectangle_arrondi_1" data-name="Rectangle arrondi 1" class="cls-1" x="176" y="99" width="977" height="323" rx="10" ry="10"/>
+  <g style="fill: #fff; filter: url(#filter)">
+    <text id="Mia_Pinsa" data-name="Mia Pinsa" class="cls-2" x="653" y="329" style="stroke: inherit; filter: none; fill: inherit"><tspan x="653">Mia Pinsa</tspan></text>
+  </g>
+  <use xlink:href="#Mia_Pinsa" style="stroke: #000; filter: none; fill: none"/>
+</svg>

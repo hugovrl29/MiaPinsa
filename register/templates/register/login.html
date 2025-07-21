@@ -1,0 +1,24 @@
+{% extends 'index.html' %}
+{% block content %}
+<h1 style="text-align: center">Se connecter</h1>
+<form method="POST" class="row g-3 w-50 mx-auto">
+    {% csrf_token %}
+
+    <div class="form-floating">
+        <input type="email" class="form-control" id="floatingInput" name="email" placeholder="jean@outlook.com">
+        <label for="floatingInput">E-mail</label>
+    </div>
+    <div class="form-floating">
+        <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
+        <label for="floatingPassword">Mot de passe</label>
+    </div>
+
+    <div class="checkbox mb-3">
+        <label>
+            <input type="checkbox" value="remember-me"> Se souvenir de moi
+        </label>
+    </div>
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Se connecter</button>
+    <p class="mt-5 mb-3 text-muted">© 2023 MiaPinsa</p>
+</form>
+{% endblock %}

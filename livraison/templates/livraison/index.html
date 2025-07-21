@@ -1,0 +1,8 @@
+{% extends "index.html" %}
+{% load static %}
+{% block content %}
+<div style="margin: auto; display: flex; flex-direction: column; align-items: center">
+    <h1>Votre commande est en route</h1>
+    {% include "livraison/map_trajet.html" %}
+</div>
+{% endblock %}

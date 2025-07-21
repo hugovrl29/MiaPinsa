@@ -1,0 +1,110 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MiaPinsa</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link
+	rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css"
+  />
+  <script type="text/javascript" src="https://unpkg.com/maplibre-gl@2.1.9/dist/maplibre-gl.js"></script>
+   <link rel="stylesheet" type="text/css" href="https://unpkg.com/maplibre-gl@2.1.9/dist/maplibre-gl.css">
+   <style>
+       #map { position:center; margin: auto; height: 90vh; width:30%; }
+       body { background-image: url({% static "img/XWiS6s_new.jpg" %});}
+   </style>
+</head>
+<body>
+<!-- Hello {{ nom }} -->
+<div class="b-example-divider"></div>
+
+  <header class="p-3 mb-3 border-bottom">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="{% url 'homepage' %}" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+          <img src="{% static 'img/mia_pinsa_logo.svg' %}" width="10%">
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="{% url 'homepage' %}" class="nav-link px-2 link-secondary">Accueil</a></li>
+          <li><a href="{% url 'menu_display' %}" class="nav-link px-2 link-dark">Carte</a></li>
+          <li><a href="{% url 'affiche-produits' %}" class="nav-link px-2 link-dark">Commander</a></li>
+          <li><a href="{% url 'contact' %}" class="nav-link px-2 link-dark">Contact</a></li>
+        </ul>
+
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+          <input type="search" class="form-control" placeholder="Rechercher..." aria-label="Search">
+        </form>
+
+        {% if user.is_authenticated %}
+        <div class="dropdown text-end">
+          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+</svg>
+          </a>
+          <ul class="dropdown-menu text-small">
+            <li>Bonjour {{ user.first_name }} {{ user.last_name }}!</li>
+            <li><a class="dropdown-item" href="{% url 'update' %}">Paramètres</a></li>
+            <li><a class="dropdown-item" href="#">Mon profil</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{% url 'logout' %}">Se déconnecter</a></li>
+          </ul>
+        </div>
+        {% else %}
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="/register/" class="nav-link px-2 link-dark">Creer un compte</a></li>
+          <li><a href="{% url 'login' %}" class="nav-link px-2 link-dark">Se connecter</a></li>
+        </ul>
+        {% endif %}
+      </div>
+    </div>
+  </header>
+{% block content %}
+{% endblock %}
+<div class="b-example-divider"></div>
+
+<div class="container">
+  <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
+    <div class="col mb-3">
+      <a href="/src/code/static" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
+        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+      </a>
+      <p class="text-muted">&copy; 2023 MiaPinsa</p>
+    </div>
+
+    <div class="col mb-3">
+
+    </div>
+
+    <div class="col mb-3">
+      <h5>Menu</h5>
+      <ul class="nav flex-column">
+        <li class="nav-item mb-2"><a href="{% url 'menu_display' %}" class="nav-link p-0 text-muted">La carte</a></li>
+      </ul>
+    </div>
+
+    <div class="col mb-3">
+      <h5>Commander</h5>
+      <ul class="nav flex-column">
+        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">À emporter</a></li>
+        <li class="nav-item mb-2"><a href="{% url 'affiche-produits' %}" class="nav-link p-0 text-muted">À livrer</a></li>
+      </ul>
+    </div>
+
+    <div class="col mb-3">
+      <h5>À propos</h5>
+      <ul class="nav flex-column">
+        <li class="nav-item mb-2"><a href="{% url 'horaires' %}" class="nav-link p-0 text-muted">Horaires</a></li>
+        <li class="nav-item mb-2"><a href="{% url 'contact' %}" class="nav-link p-0 text-muted">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
+</html>

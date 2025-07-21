@@ -1,0 +1,57 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+<table class="table" style="margin: auto; width: 75%; text-align: center">
+          <thead>
+            <tr>
+              <th>Jour</th>
+              <th>Midi</th>
+              <th>Soir</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Lundi</td>
+              <td>12h00 - 14h00</td>
+              <td>18h00 - 22h00</td>
+            </tr>
+            <tr>
+              <td>Mardi</td>
+              <td><span style="color:red">Fermé</span></td>
+              <td><span style="color:red">Fermé</span></td>
+            </tr>
+            <tr>
+              <td>Mercredi</td>
+              <td>12h00 - 14h00</td>
+              <td>18h00 - 22h00</td>
+            </tr>
+            <tr>
+                <td>Jeudi</td>
+                <td>12h00 - 14h00</td>
+                <td>18h00 - 22h00</td>
+            </tr>
+            <tr>
+              <td>Vendredi</td>
+              <td>12h00 - 14h00</td>
+              <td>18h00 - 22h00</td>
+            </tr>
+            <tr>
+              <td>Samedi</td>
+              <td>12h00 - 14h00</td>
+              <td>18h00 - 22h00</td>
+            </tr>
+            <tr>
+              <td>Dimanche</td>
+              <td><span style="color:red">Fermé</span></td>
+              <td>18h00 - 22h00</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td>Jour férié</td>
+              <td><span style="color:red">Fermé</span></td>
+              <td>18h00 - 22h00</td>
+            </tr>
+          </tfoot>
+        </table>
+{% endblock %}

@@ -1,0 +1,95 @@
+{% extends "index.html" %}
+{% load static %}
+{% block content %}
+
+<h1 style="text-align: center">Pinsa</h1>
+<div class="btn-group" role="group" aria-label="Basic mixed styles example" style="position: fixed; right: 1rem; bottom: 1rem; box-shadow: 2px 2px 2px 2px black; z-index: 999999">
+  <a href="{% url 'delete_cart' %}" class="btn btn-dark">Annuler la commande</a>
+  <a href="{% url 'confirm_cart' %}" class="btn btn-light">Commander et payer</a>
+</div>
+<div class="row" style="justify-content: center">
+{% for produit in pinsa %}
+<div class="card" style="width: 18rem;">
+  <img src="https://img.cuisineaz.com/660x660/2018/02/28/i136025-pizza-legere.jpeg" class="card-img-top" alt="{{produit.produit_libelle}}">
+  <div class="card-body">
+
+    {% if produit.produit_sous_type == "VG" %}
+    <h5 class="card-title">{{produit.produit_libelle}} <span style="color: green"><small>(végétarien)</small></span></h5>
+    {% else %}
+    <h5 class="card-title">{{produit.produit_libelle}}</h5>
+    {% endif %}
+
+    <p class="card-text">{{produit.produit_composition}} {{produit.produit_prix}}€</p>
+    <div class="btn-group" role="group" aria-label="Basic mixed styles example" style="float: right">
+      <a href="{% url 'remove_from_cart' produit.slug 0 %}" class="btn btn-secondary"> Retirer <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-dash-fill" viewBox="0 0 16 16">
+  <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM6.5 7h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1 0-1z"/>
+</svg></a>
+      <a href="{% url 'add_to_cart' produit.slug 0 %}" class="btn btn-dark"> Ajouter <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus-fill" viewBox="0 0 16 16">
+  <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM9 5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 1 0z"/>
+</svg></a>
+    </div>
+  </div>
+</div>
+{% endfor %}
+  </div>
+<div class="b-example-divider"></div>
+<h1 style="text-align: center">Antipasti</h1>
+{% for produit in antipasti %}
+<div class="card" style="width: 18rem;">
+  <!-- <img src="{{produit.produit_photo.url}}" class="card-img-top" alt="{{produit.produit_libelle}}"> -->
+  <div class="card-body">
+    <h5 class="card-title">{{produit.produit_libelle}}</h5>
+    <p class="card-text">{{produit.produit_composition}} {{produit.produit_prix}}€</p>
+    <a href="{% url 'add_to_cart' produit.slug  0 %}" class="btn btn-dark">Ajouter au panier</a>
+  </div>
+</div>
+{% endfor %}
+<div class="b-example-divider"></div>
+<h1 style="text-align: center">Pasta</h1>
+{% for produit in pasta %}
+<div class="card" style="width: 18rem;">
+  <!-- <img src="{{produit.produit_photo.url}}" class="card-img-top" alt="{{produit.produit_libelle}}"> -->
+  <div class="card-body">
+    <h5 class="card-title">{{produit.produit_libelle}}</h5>
+    <p class="card-text">{{produit.produit_composition}} {{produit.produit_prix}}€</p>
+    <a href="{% url 'add_to_cart' produit.slug  0 %}" class="btn btn-dark">Ajouter au panier</a>
+  </div>
+</div>
+{% endfor %}
+<div class="b-example-divider"></div>
+<h1 style="text-align: center">Past'al forno</h1>
+{% for produit in pastalforno %}
+<div class="card" style="width: 18rem;">
+  <!-- <img src="{{produit.produit_photo.url}}" class="card-img-top" alt="{{produit.produit_libelle}}"> -->
+  <div class="card-body">
+    <h5 class="card-title">{{produit.produit_libelle}}</h5>
+    <p class="card-text">{{produit.produit_composition}} {{produit.produit_prix}}€</p>
+    <a href="{% url 'add_to_cart' produit.slug 0 %}" class="btn btn-dark">Ajouter au panier</a>
+  </div>
+</div>
+{% endfor %}
+<div class="b-example-divider"></div>
+<h1 style="text-align: center">Desserts</h1>
+{% for produit in dessert %}
+<div class="card" style="width: 18rem;">
+  <!-- <img src="{{produit.produit_photo.url}}" class="card-img-top" alt="{{produit.produit_libelle}}"> -->
+  <div class="card-body">
+    <h5 class="card-title">{{produit.produit_libelle}}</h5>
+    <p class="card-text">{{produit.produit_composition}} {{produit.produit_prix}}€</p>
+    <a href="{% url 'add_to_cart' produit.slug 0 %}" class="btn btn-dark">Ajouter au panier</a>
+  </div>
+</div>
+{% endfor %}
+<div class="b-example-divider"></div>
+<h1 style="text-align: center">Boissons</h1>
+{% for produit in boisson %}
+<div class="card" style="width: 18rem;">
+  <!-- <img src="{{produit.produit_photo.url}}" class="card-img-top" alt="{{produit.produit_libelle}}"> -->
+  <div class="card-body">
+    <h5 class="card-title">{{produit.produit_libelle}}</h5>
+    <p class="card-text">{{produit.produit_composition}} {{produit.produit_prix}}€</p>
+    <a href="{% url 'add_to_cart' produit.slug 0 %}" class="btn btn-dark">Ajouter au panier</a>
+  </div>
+</div>
+{% endfor %}
+{% endblock %}
